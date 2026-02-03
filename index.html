@@ -1,10 +1,20 @@
+
+
+
+<!--
+this is made by helloGC
+go to line 128, and replace 'XYZ' with the name of the person you want to propose to.
+go to line 179, and replace the text inside double quotes with your custom text to show after clicking on YES button.
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>valentine</title>
     <style>
         body {
             margin: 0;
@@ -115,7 +125,7 @@
     <section>
         <div class="box" id="box">
             <div id="img"></div>
-            <h1 id="hea"></h1>
+            <h1 id="hea">hey <span>XYZ</span> will you marry me?</h1> <!-- replace Text to show on front Page with the name -->
             <video width="320" height="240" id="vid" autoplay loop>
                 <source src="https://res.cloudinary.com/dksggwla1/video/upload/v1770122775/proposal_oxne9z.mp4" type="video/mp4">
             </video>
@@ -126,8 +136,7 @@
 
     <script>
 
-        const Name = "XYZ";//name to whom you want to propose
-        document.getElementById("hea").innerHTML = `Hey "<span>${Name}</span>" will you marry me`;
+
         const mainbox = document.getElementById("box");
         const noBtn = document.getElementById("no");
         const yBtn = document.getElementById("yes");
@@ -154,7 +163,7 @@
                 x = Math.random() * maxX;
                 y = Math.random() * maxY;
 
-                // check if cursor is inside button area
+
                 isOverlapping =
                     e.clientX > x &&
                     e.clientX < x + noBtn.offsetWidth &&
@@ -167,7 +176,7 @@
         }
 
         yBtn.addEventListener("click", function () {
-            hea.innerText = "YAYYY!!! I LOVE YOU SO MUCH 💖";
+            hea.innerText = "YAYYY!!! I LOVE YOU SO MUCH 💖";  //text after clicking on YES
             hea.style.color = "blue";
             catImg.style.transform = "scaleX(-1)";
             const video = document.getElementById("vid");
@@ -178,6 +187,8 @@
             yBtn.style.display = "none";
             noBtn.style.display = "none";
         });
+
+        
     </script>
 </body>
 
