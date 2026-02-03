@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section .box {
+            min-width: 300px;
+            width: 70%;
+            height: 80%;
+            background-image: url("https://res.cloudinary.com/dksggwla1/image/upload/v1770122773/bg_b5gxvj.jpg");
+            background-size: cover;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .box #img {
+            min-width: 250px;
+            min-height: 240px;
+            background-image: url("https://res.cloudinary.com/dksggwla1/image/upload/v1770122773/cat_ne94e4.png");
+            background-size: cover;
+            transform: scaleX(1);
+        }
+
+
+        .box h1 {
+            color: rgb(229, 78, 78);
+            text-align: center;
+        }
+
+        .box h1 span {
+            color: red;
+        }
+
+
+        .box .btn {
+
+            font-size: 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .box .btn#yes {
+            width: 170px;
+            min-height: 80px;
+            background-image: url("https://res.cloudinary.com/dksggwla1/image/upload/v1770122773/btnBg_ruor46.jpg");
+            background-size: cover;
+            box-shadow: 0px 0px 10px white inset;
+            color: white;
+            font-size: 30px;
+            font-weight: bolder;
+            font-family: serif;
+            text-shadow: 0px 0px 5px black inset;
+        }
+
+        .box .btn#no {
+            background-color: #140352;
+            position: absolute;
+            color: white;
+            padding: 15px;
+            top: 63%;
+            left: 56%;
+            border: 5px solid rgb(242, 133, 16);
+            transition: all 0.3s ease;
+        }
+
+        .box video {
+            border: 5px solid white;
+            border-radius: 20px;
+            margin: 20px;
+            display: none;
+        }
+
+        @media (max-width:400px) {
+            .box video {
+                width: 280px;
+                border-radius: 20px;
+                margin: 20px;
+                display: none;
+                background-color: rgb(236, 182, 227);
+            }
+
+            .box .btn#no {
+                top: 78%;
+                left: 36%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="box" id="box">
+            <div id="img"></div>
+            <h1 id="hea"></h1>
+            <video width="320" height="240" id="vid" autoplay loop>
+                <source src="https://res.cloudinary.com/dksggwla1/video/upload/v1770122775/proposal_oxne9z.mp4" type="video/mp4">
+            </video>
+            <button class="btn y" id="yes">YES</button>
+            <button class="btn n" id="no">NO</button>
+        </div>
+    </section>
+
+    <script>
+
+        const Name = "XYZ";//name to whom you want to propose
+        document.getElementById("hea").innerHTML = `Hey "<span>${Name}</span>" will you marry me`;
+        const mainbox = document.getElementById("box");
+        const noBtn = document.getElementById("no");
+        const yBtn = document.getElementById("yes");
+        const hea = document.getElementById("hea");
+        const catImg = document.getElementById("img");
+
+        noBtn.addEventListener("mouseover", function (e) {
+            Noct(e);
+        });
+
+        noBtn.addEventListener("click", function (e) {
+            Noct(e);
+        });
+        function Noct(e) {
+
+            let x, y;
+            let isOverlapping = true;
+
+            while (isOverlapping) {
+
+                const maxX = mainbox.clientWidth - noBtn.offsetWidth;
+                const maxY = mainbox.clientHeight - noBtn.offsetHeight;
+
+                x = Math.random() * maxX;
+                y = Math.random() * maxY;
+
+                // check if cursor is inside button area
+                isOverlapping =
+                    e.clientX > x &&
+                    e.clientX < x + noBtn.offsetWidth &&
+                    e.clientY > y &&
+                    e.clientY < y + noBtn.offsetHeight;
+            }
+
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        yBtn.addEventListener("click", function () {
+            hea.innerText = "YAYYY!!! I LOVE YOU SO MUCH 💖";
+            hea.style.color = "blue";
+            catImg.style.transform = "scaleX(-1)";
+            const video = document.getElementById("vid");
+            catImg.style.backgroundImage = "url('https://res.cloudinary.com/dksggwla1/image/upload/v1770122773/accepted_einirx.png')";
+            mainbox.style.backgroundImage = "url('https://res.cloudinary.com/dksggwla1/image/upload/v1770122773/bg_b5gxvj.jpg')";
+            video.style.display = "block";
+            video.play();
+            yBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
